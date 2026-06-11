@@ -8,7 +8,7 @@ use App\Http\Controllers\AdminController; // 🌟 Import your new Admin Controll
 use App\Http\Controllers\CompanyDetailController;
 
 // ── PUBLIC AUTHENTICATION ROUTES ─────────────────────────────────────
-Route::get('/login', [LoginController::class, 'login_page']);
+Route::get('/', [LoginController::class, 'login_page']);
 Route::post('/login', [LoginController::class, 'login_check'])->name('login');
 
 Route::get('/register', [LoginController::class, 'register_page']);

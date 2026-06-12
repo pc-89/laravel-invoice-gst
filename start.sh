@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
+
 echo "Running composer..."
 composer install --no-dev --optimize-autoloader
 

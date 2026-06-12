@@ -49,7 +49,7 @@
         <!-- ITEMS -->
         <h5 class="mb-3">Work Items</h5>
 
-        <div class="row g-2 align-items-end">
+        {{-- <div class="row g-2 align-items-end">
 
             <div class="col-md-5">
                 <label>Description</label>
@@ -66,6 +66,39 @@
                 <input type="number" name="rate[]" class="form-control">
             </div>
 
+        </div> --}}
+
+        <div id="items-wrapper">
+            <div class="row g-2 align-items-end item-row mb-2">
+
+                <div class="col-md-5">
+                    <label>Description</label>
+                    <input type="text" name="description[]" class="form-control" placeholder="e.g. Cement Work" required>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Qty</label>
+                    <input type="number" name="qty[]" class="form-control" step="any" required>
+                </div>
+
+                <div class="col-md-2">
+                    <label>Rate</label>
+                    <input type="number" name="rate[]" class="form-control" step="any" required>
+                </div>
+
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-danger remove-row w-100" style="display:none;">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="col-md-2 add-row-col">
+                    <button type="button" id="add-row" class="btn btn-primary w-100">
+                        + Add
+                    </button>
+                </div>
+
+            </div>
         </div>
 
         <div class="mt-4">
@@ -83,5 +116,33 @@
     </form>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const wrapper = document.getElementById('items-wrapper');
+    const addBtn = document.getElementById('add-row');
+
+    addBtn.addEventListener('click', function () {
+        const firstRow = wrapper.querySelector('.item-row');
+        const newRow = firstRow.cloneNode(true);
+
+        // Clear input values in the cloned row
+        newRow.querySelectorAll('input').forEach(input => input.value = '');
+
+        // Show the "Remove" button on this new row
+        const removeBtn = newRow.querySelector('.remove-row');
+        removeBtn.style.display = 'inline-block';
+
+        wrapper.appendChild(newRow);
+    });
+
+    // Handle remove button clicks (using event delegation)
+    wrapper.addEventListener('click', function (e) {
+        if (e.target.classList.contains('remove-row')) {
+            e.target.closest('.item-row').remove();
+        }
+    });
+});
+</script>
 
 @endsection

@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function approve($id)
     {
         $user = User::findOrFail($id);
-        $user->update(['is_approved' => true]);
+        $user->update(['is_approved' => \DB::raw('true')]);
 
         return redirect()->back()->with('success', $user->name . ' has been approved successfully!');
     }

@@ -11,7 +11,7 @@ class DashboardController extends Controller
     {
         // 🌟 FIXED: Retrieve the collection data records instead of just a raw count integer
         $pendingUsers = User::where('role', 'user')
-                            ->where('is_approved', false)
+                            ->whereRaw('is_approved = false')
                             ->get();
 
         // Optional stats calculation fallback values matching your legacy commented code:

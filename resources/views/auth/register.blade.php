@@ -67,7 +67,7 @@ body{
 
 <p class="text-center">
     Already have an account?
-    <a href="/login">Login</a>
+    <a href="/">Login</a>
 </p>
 
 </div>
